@@ -36,15 +36,15 @@ class Geometria:
     def volumen_cubo(self, lado):
         return lado**3
     def area_superficie_cubo(self, lado):
-        
+        return 6 * (lado**2)
     def volumen_esfera(self, radio):
-        
+        return (4/3) * math.pi * (radio ** 3)
     def area_superficie_esfera(self, radio):
-        
+        return 4 * math.pi * (radio**3)
     def volumen_cilindro(self, radio, altura):
-        
+        return math.pi * (radio**2)
     def area_superficie_cilindro(self, radio, altura):
-        
+        return 2 * math.pi *radio * (altura + radio)
     def distancia_entre_puntos(self, x1, y1, x2, y2):
         
     def punto_medio(self, x1, y1, x2, y2):
