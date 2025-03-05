@@ -22,9 +22,9 @@ class Geometria:
     def es_triangulo_valido(self, lado1, lado2, lado3):
         return (lado1 + lado2 > lado3) and (lado1 + lado3 > lado2) and (lado2 + lado3 > lado1)
     def area_trapecio(self, base_mayor, base_menor, altura):
-        
+        return ((base_mayor + base_menor) * altura)/2
     def area_rombo(self, diagonal_mayor, diagonal_menor):
-        
+        return (diagonal_mayor * diagonal_menor)/2
     def area_pentagono_regular(self, lado, apotema):
         
     def perimetro_pentagono_regular(self, lado):
