@@ -26,15 +26,15 @@ class Geometria:
     def area_rombo(self, diagonal_mayor, diagonal_menor):
         return (diagonal_mayor * diagonal_menor)/2
     def area_pentagono_regular(self, lado, apotema):
-        
+        return (5 * lado * apotema)/2
     def perimetro_pentagono_regular(self, lado):
-        
+        return 5 * lado
     def area_hexagono_regular(self, lado, apotema):
-        
+        return (6 * lado *apotema)/2
     def perimetro_hexagono_regular(self, lado):
-        
+        return 6 * lado
     def volumen_cubo(self, lado):
-        
+        return lado**3
     def area_superficie_cubo(self, lado):
         
     def volumen_esfera(self, radio):
