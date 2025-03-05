@@ -46,13 +46,20 @@ class Geometria:
     def area_superficie_cilindro(self, radio, altura):
         return 2 * math.pi *radio * (altura + radio)
     def distancia_entre_puntos(self, x1, y1, x2, y2):
-        
+        return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
     def punto_medio(self, x1, y1, x2, y2):
-        
+        return ((x2-x1)/2, (y2-y1)/2)
     def pendiente_recta(self, x1, y1, x2, y2):
-        
+        if x1==x2:
+            raise ValueError("La pendiente es indefinida para una linea vertical.")
+        return (y2 - y1)/(x2 -x1)
     def ecuacion_recta(self, x1, y1, x2, y2):
-        
+        if x1 == x2:
+            return (1, 0, -x1) # Recta vertical x  = constante
+        m = self.pendiente_recta(x1,y1,x2,y2)
+        b = y1 - m * x1
+        return (-m, 1, -b)
     def area_poligono_regular(self, num_lados, lado, apotema):
-        
+        return (num_lados * lado * apotema)/2
     def perimetro_poligono_regular(self, num_lados, lado):
+        return num_lados * lado
