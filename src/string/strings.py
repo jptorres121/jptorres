@@ -1,55 +1,46 @@
+import re
+
 class Strings:
     def es_palindromo(self, texto):
-        texto = texto.lower().replace(" ", "")  # Convertir a minúsculas y eliminar espacios
-        return texto == texto[::-1]
+        """Verifica si una cadena es un palíndromo ignorando espacios y mayúsculas."""
+        texto_limpio = re.sub(r'[^a-zA-Z0-9]', '', texto).lower()
+        return texto_limpio == texto_limpio[::-1]
 
     def invertir_cadena(self, texto):
-        invertida = ""
-        for char in texto:
-            invertida = char + invertida  # Agregar cada caracter al inicio de la nueva cadena
-        return invertida
+        """Invierte una cadena."""
+        return texto[::-1]
 
     def contar_vocales(self, texto):
+        """Cuenta la cantidad de vocales en una cadena."""
         vocales = "aeiouAEIOU"
-        return sum(1 for char in texto if char in vocales)
+        return sum(1 for letra in texto if letra in vocales)
 
     def contar_consonantes(self, texto):
-        consonantes = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
-        return sum(1 for char in texto if char in consonantes)
+        """Cuenta la cantidad de consonantes en una cadena."""
+        vocales = "aeiouAEIOU"
+        consonantes = [letra for letra in texto if letra.isalpha() and letra not in vocales]
+        print(f"Consonantes encontradas en '{texto}': {consonantes}")
+        return len(consonantes) 
 
-    def es_anagrama(self, texto1, texto2):
-        return sorted(texto1.replace(" ", "").lower()) == sorted(texto2.replace(" ", "").lower())
+    def es_anagrama(self, palabra1, palabra2):
+        """Verifica si dos palabras son anagramas."""
+        palabra1_limpia = sorted(re.sub(r'\s+', '', palabra1.lower()))
+        palabra2_limpia = sorted(re.sub(r'\s+', '', palabra2.lower()))
+        return palabra1_limpia == palabra2_limpia
 
     def contar_palabras(self, texto):
-        return len(texto.split())
+        """Cuenta el número de palabras en una cadena."""
+        palabras = texto.strip().split()
+        return len(palabras)
 
     def palabras_mayus(self, texto):
-        return " ".join([palabra.capitalize() for palabra in texto.split()])
+        """Convierte cada palabra en la cadena a mayúscula inicial."""
+        return texto.title()
 
     def eliminar_espacios_duplicados(self, texto):
-        return " ".join(texto.split())
+        """Elimina los espacios duplicados en una cadena."""
+        return re.sub(r'\s+', ' ', texto)
 
     def es_numero_entero(self, texto):
-        if texto.startswith("-"):
-            texto = texto[1:]
-        return all(char in "0123456789" for char in texto) and bool(texto)
-
-    def cifrar_cesar(self, texto, desplazamiento):
-        resultado = ""
-        for char in texto:
-            if char.isalpha():
-                base = ord('A') if char.isupper() else ord('a')
-                resultado += chr((ord(char) - base + desplazamiento) % 26 + base)
-            else:
-                resultado += char
-        return resultado
-
-    def descifrar_cesar(self, texto, desplazamiento):
-        return self.cifrar_cesar(texto, -desplazamiento)
-
-    def encontrar_subcadena(self, texto, subcadena):
-        posiciones = []
-        for i in range(len(texto) - len(subcadena) + 1):
-            if texto[i:i + len(subcadena)] == subcadena:
-                posiciones.append(i)
-        return posiciones
+        """Verifica si un string representa un número entero."""
+        return texto.lstrip('-').isdigit()
